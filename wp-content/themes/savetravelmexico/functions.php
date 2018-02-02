@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__ . '/integrationMenu.php';
 /**
 * загружаемые  стили и скрипты
 */
@@ -13,8 +15,26 @@ wp_enqueue_script('libSTM', get_template_directory_uri() . '/dist/js/lib.js', []
 wp_enqueue_script('bootstrapSTM', get_template_directory_uri() . '/dist/js/bootstrap.min.js', [], null, true);
 wp_enqueue_script('mainScriptSTM', get_template_directory_uri() . '/dist/js/main.js', [], null, true);
 }
-// загружаем стили
+// загружаем скрипты стили
 add_action('wp_enqueue_scripts', 'loadStyleScript');
+/**
+ * end загружаемые  стили и скрипты
+ */
+
+/**
+ * вывод title
+ */
+// хук для title
+add_action('after_setup_theme', 'titleStm');
+
+function titleStm()
+{
+  /*добавляем title*/
+  add_theme_support('title-tag');
+}
+/**
+ * end вывод title
+ */
 
 /**
  * удаляем теги из html
@@ -62,3 +82,21 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 /**
  * удаляем теги из html
  */
+
+/**
+ * Добавляем виджиты
+ */
+
+/**
+ * END Добавляем виджиты
+ */
+
+/*menu*/
+/* Theme setup */
+add_action( 'after_setup_theme', 'wpt_setup' );
+    if ( ! function_exists( 'wpt_setup' ) ):
+      function wpt_setup() {
+        register_nav_menu( 'primary', __( 'Primary navigation', 'wptuts' ) );
+      } endif;
+
+/* end menu*/

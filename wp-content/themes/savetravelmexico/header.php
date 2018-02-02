@@ -5,7 +5,6 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Savetravelmexico</title>
   <link href="<?php bloginfo('template_url')?>/dist/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
   <?php wp_head(); ?>
 </head>
@@ -16,13 +15,23 @@
       <div class="rd-navbar-inner">
         <div class="rd-navbar-panel">
           <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
-          <div class="rd-navbar-brand veil reveal-md-block"><a href="index.html" class="brand-name"><img class="logo-header" src='<?php bloginfo('template_url')?>/dist/images/logo.svg' alt=''/></a></div>
-          <div class="rd-navbar-brand veil-md"><a href="index.html" class="brand-name"><img class="logo-header" src='<?php bloginfo('template_url')?>/dist/images/logo-phone.svg' alt=''/></a></div>
+          <div class="rd-navbar-brand veil reveal-md-block"><a href="<?php bloginfo('url')?>" class="brand-name"><img class="logo-header" src='<?php bloginfo('template_url')?>/dist/images/logo.svg' alt=''/></a></div>
+          <div class="rd-navbar-brand veil-md"><a href="<?php bloginfo('url')?>" class="brand-name"><img class="logo-header" src='<?php bloginfo('template_url')?>/dist/images/logo-phone.svg' alt=''/></a></div>
           <button data-rd-navbar-toggle=".rd-navbar-collapse-wrap" class="rd-navbar-collapse"><span></span></button>
         </div>
         <div class="rd-navbar-right-side">
           <div class="rd-navbar-nav-wrap reveal-md-inline-block">
-            <ul class="rd-navbar-nav">
+            <?php /* Primary navigation */
+            wp_nav_menu( array(
+                'menu' => 'top_menu',
+                'depth' => 2,
+                'container' => false,
+                'menu_class' => 'rd-navbar-nav',
+                //Process nav menu using our custom nav walker
+                'walker' => new wp_bootstrap_navwalker())
+            );
+            ?>
+            <!--<ul class="rd-navbar-nav">
               <li class="active"><a href="index.html">Главная</a></li>
               <li><a href="about.html">О нас</a></li>
               <li>
@@ -53,7 +62,7 @@
               <li><a href="reviews.html">Отзывы</a>
               </li>
               <li><a href="contacts.html">Контакты</a></li>
-            </ul>
+            </ul>-->
           </div>
           <div class="rd-navbar-collapse-wrap reveal-md-inline-block">
             <ul class="list-inline list-inline-0 list-primary flag-wrapper">
