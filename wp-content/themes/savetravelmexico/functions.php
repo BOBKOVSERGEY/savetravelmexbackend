@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/integrationMenu.php';
+require_once __DIR__ . '/integrationBreadcrumbs.php';
 /**
 * загружаемые  стили и скрипты
 */
