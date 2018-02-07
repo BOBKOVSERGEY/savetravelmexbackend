@@ -81,8 +81,14 @@
 <section class="breadcrumbs">
   <div class="breadcrumbs__bg">
     <div class="container">
-      <h1 class="breadcrumbs__heading">О компании</h1>
-      <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' '); ?>
+      <h1 class="breadcrumbs__heading">
+        <?php if (is_category()) {?>
+          <?php single_cat_title();?>
+        <?php } else {?>
+          <?php the_title();?>
+        <?php }?>
+      </h1>
+      <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' / '); ?>
     </div>
   </div>
 </section>
