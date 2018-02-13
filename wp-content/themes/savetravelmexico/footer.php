@@ -1,3 +1,10 @@
+<?php
+if ( !is_page( 'tours' ) && $post->post_parent )
+  include __DIR__ . '/inc/form-tour.php';
+if ( is_page( 'contacts' ) )
+  include __DIR__ . '/inc/form-contacts.php';
+
+?>
 <section class="footer">
   <div class="footer__wrapper">
     <div class="container">
@@ -38,33 +45,9 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="footer__contacts-heading">
-            Связаться с нами
-          </div>
-          <div class="footer__contacts-container">
-            <div class="footer__contacts-icon">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-            </div>
-            <div class="footer__contacts-description">
-              +529841648846
-            </div>
-          </div>
-          <div class="footer__contacts-container">
-            <div class="footer__contacts-icon">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </div>
-            <div class="footer__contacts-description">
-              info@savetravelmex.com
-            </div>
-          </div>
-          <div class="footer__contacts-container">
-            <div class="footer__contacts-icon">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-            </div>
-            <div class="footer__contacts-description">
-              Tulum coastal road Tulum- Boca Paila- Punta Allen, 109, Q.R
-            </div>
-          </div>
+          <?php if(!dynamic_sidebar('contacts-footer')){ ?>
+            <span>Это footer, добавляемого из виджетов</span>
+          <?php } ?>
         </div>
         <div class="col-md-4">
           <div class="footer__letter-heading">

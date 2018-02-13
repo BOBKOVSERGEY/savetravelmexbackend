@@ -14,7 +14,7 @@ wp_enqueue_style('styleSTM', get_stylesheet_uri());
 // подключаем скрипты
 wp_enqueue_script('libSTM', get_template_directory_uri() . '/dist/js/lib.js', [], null, true);
 wp_enqueue_script('bootstrapSTM', get_template_directory_uri() . '/dist/js/bootstrap.min.js', [], null, true);
-wp_enqueue_script('mainScriptSTM', get_template_directory_uri() . '/dist/js/main.js', [], null, true);
+wp_enqueue_script('mainScriptSTM', get_template_directory_uri() . '/dist/js/main.js', [], true, true);
 }
 // загружаем скрипты стили
 add_action('wp_enqueue_scripts', 'loadStyleScript');
@@ -88,8 +88,130 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
  * Добавляем виджиты
  */
 
+register_sidebar([
+  'name'          => 'Контакты в подвале',
+  'id'          => 'contacts-footer',
+  'class'         => '',
+  'before_widget' => '',
+  'after_widget'  => '',
+]);
+
 /**
  * END Добавляем виджиты
+ */
+
+/**
+ *
+ * Комментарии
+ */
+
+add_filter( 'comment_form_default_fields', 'wpsites_comment_form_fields' );
+
+function wpsites_comment_form_fields( $fields ) {
+
+  unset($fields['url']);
+
+
+
+  $fields['author'] = '<div class="row"><div class="col-md-6">
+                      <div class="comments__wrapper-input">
+                        <input class="comments__input" type="text" autocomplete="off" id="author" name="author"  value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="Ваше имя" ' . $aria_req . $html_req . '>
+                      </div>
+                    </div>';
+
+  $fields['email']  = '<div class="col-md-6">
+                      <div class="comments__wrapper-input">
+                        <input class="comments__input" type="text" autocomplete="off" name="email" id="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" placeholder="Email" ' . $aria_req . '>
+                      </div>
+                    </div></div>';
+
+  return $fields;
+}
+
+function wpb_move_comment_field_to_bottom( $fields ) {
+  $comment_field = $fields['comment'] = '<div class="row">
+                                          <div class="col-md-12">
+                                            <div class="comments__wrapper-textarea">
+                                              <textarea class="comments__textarea" id="comment" name="comment" placeholder="Комментарий"></textarea>
+                                            </div>
+                                          </div>
+                                        </div>';
+  unset( $fields['comment'] );
+  $fields['comment'] = $comment_field;
+
+
+
+  return $fields;
+}
+
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+
+
+
+function stmListComments($comment, $args, $depth) {
+  if ( 'div' === $args['style'] ) {
+    $tag       = 'div ';
+    $add_below = 'comments__item';
+  } else {
+    $tag       = 'div ';
+    $add_below = 'comments__box comments__boxed';
+  }?>
+  <<?php echo $tag; comment_class( empty( $args['has_children'] ) ? 'comments__box comments__boxed' : 'comments__box comments__boxed parent' ); ?> id="comment-<?php comment_ID() ?>">
+<div id="div-comment-<?php comment_ID() ?>" class="comment-body comments__item">
+  <?php
+  if ( 'div' != $args['style'] ) { ?>
+
+    <div id="div-comment-<?php comment_ID() ?>" class="comment-body comments__item"><?php
+  } ?>
+  <?php if ( $args['avatar_size'] != 0 ) {?>
+    <div class="comments__item-avatar">
+      <?php echo get_avatar( $comment, $args['avatar_size'] );?>
+    </div>
+  <?php }?>
+  <div class="comments__item-body">
+  <header class="comments__item-body-header"><?php
+  printf( __( '<span class="text-middle">%s</span>' ), get_comment_author_link() ); ?>
+  <?php
+  if ( $comment->comment_approved == '0' ) { ?>
+    <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br/><?php
+  } ?>
+  <i class="material-icons text-middle" >query_builder</i> <time class="text-middle" datetime="21.12.2017"><?php
+      /* translators: 1: date, 2: time */
+      printf(
+        __('%1$s'),
+        get_comment_date()
+      ); ?></time>
+
+    <?php
+    edit_comment_link( __( '(Edit)' ), '  ', '' ); ?>
+  </header>
+  <div class="comments__item-body-comment">
+  <?php comment_text(); ?>
+    <div class="reply"><?php
+      comment_reply_link(
+        array_merge(
+          $args,
+          array(
+            'add_below' => $add_below,
+            'depth'     => $depth,
+            'max_depth' => $args['max_depth']
+          )
+        )
+      ); ?>
+    </div>
+  </div>
+  </div>
+  </div>
+  <?php
+  if ( 'div' != $args['style'] ) : ?>
+    </div></div><?php
+  endif;
+
+}
+
+/**
+ *
+ * End  Комментарии
  */
 
 /*menu*/

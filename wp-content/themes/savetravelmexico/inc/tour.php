@@ -77,23 +77,29 @@
     </nav>
   </div>
 </header>
-<?php if (!is_front_page()) {?>
-<section class="breadcrumbs">
-  <div class="breadcrumbs__bg">
+<section class="tour-slider">
+  <div class="swiper-container tour-slider__container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide tour-slider__item" style="background-image: url('<?php bloginfo('template_url')?>/dist/images/slider-9.jpg');">
+
+      </div>
+      <div class="swiper-slide tour-slider__item" style="background-image: url('<?php bloginfo('template_url')?>/dist/images/slider-4.jpg');">
+
+      </div>
+    </div>
+    <!-- Add Arrows
+    <div class="swiper-button-white swiper-button-next"></div>
+    <div class="swiper-button-white swiper-button-prev"></div>-->
+  </div>
+  <div class="tour-slider__caption">
     <div class="container">
-      <h1 class="breadcrumbs__heading">
-        <?php if (is_category()) {?>
-          <?php single_cat_title();?>
-        <?php } else if (is_search()) {?>
-          Поиск
-          <?php } else if (is_404()) {?>
-          404
-        <?php } else {?>
-          <?php the_title();?>
-        <?php }?>
-      </h1>
+      <h1 class="tour-slider__heading"><?php the_title();?></h1>
       <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' / '); ?>
     </div>
   </div>
+  <div class="tour-slider__bottom-panel" id="description">
+    <svg width="104" height="33">
+      <path style="fill:#ffffff;fill-opacity:1" d="m 0.01291655,16.605668 0,-16.62382923 5.25000005,0.439007 C 12.962198,1.0646618 18.007648,4.7929098 22.364223,13.057557 c 6.80539,12.91018 16.468604,19.152403 29.648693,19.152403 13.180088,0 22.843308,-6.242223 29.648698,-19.152403 4.35657,-8.2646472 9.40202,-11.9928952 17.1013,-12.63671123 l 5.250006,-0.439007 0,16.62382923 0,16.62383 -52.000004,0 -51.99999945,0 0,-16.62383 z"></path>
+    </svg><i data-custom-scroll-to="description" class="fa fa-chevron-down slider__bottom-panel-icon" aria-hidden="true"></i>
+  </div>
 </section>
-<?php }?>

@@ -345,9 +345,9 @@ $document.ready(function () {
     loop: true,
     effect: 'fade',
     speed: 600,
-    //autoplay: {
-      //delay: 5000,
-    //},
+    autoplay: {
+      delay: 5000,
+    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -700,7 +700,7 @@ $document.ready(function () {
   /*validate comments__form*/
   $('.comments__form').validate({
     rules: {
-      name: {
+      author: {
         required: true,
       },
       email: {
@@ -712,7 +712,7 @@ $document.ready(function () {
       }
     },
     messages: {
-      name: {
+      author: {
         required: "Введите Ваше имя"
       },
       email: {
