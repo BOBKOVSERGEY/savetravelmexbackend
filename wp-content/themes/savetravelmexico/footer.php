@@ -11,7 +11,7 @@ if ( is_page( 'contacts' ) )
       <div class="row">
         <div class="col-md-4">
           <div class="footer__logo">
-            <img src='<?php bloginfo('template_url')?>/dist/images/logo.svg' alt=''>
+            <img src='<?php bloginfo('template_url')?>/dist/images/logo-new-m.png' alt=''>
           </div>
           <div class="footer__social">
             <div class="footer__social-heading">Подпишитесь на нас</div>

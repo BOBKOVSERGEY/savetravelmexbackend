@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="contacts-form__wrapper-checkbox">
-              <input id="chk" type="checkbox" class="js-policy" checked><label for="chk">Подтверждаю свое согласие на <a href="#">обработку</a> персональных данных</label>
+              <input id="chk" type="checkbox" class="js-policy" checked><label for="chk">Подтверждаю свое согласие на <a href="/soglasie-na-obrabotku-dannyh/">обработку</a> персональных данных</label>
             </div>
             <div class="contacts-form__wrapper-button">
               <button class="contacts-form__btn contacts-form__btn_blue" type="submit">Оставить заявку</button>

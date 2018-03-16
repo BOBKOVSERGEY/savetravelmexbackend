@@ -31,38 +31,6 @@
                 'walker' => new wp_bootstrap_navwalker())
             );
             ?>
-            <!--<ul class="rd-navbar-nav">
-              <li class="active"><a href="index.html">Главная</a></li>
-              <li><a href="about.html">О нас</a></li>
-              <li>
-                <a href="categorytours.html">Туры</a>
-                <ul class="rd-navbar-dropdown">
-                  <li><a href="tours.html">История древней цивилизации майя</a></li>
-                  <li><a href="#">Национальные заповедники и эко туры</a></li>
-                  <li><a href="#">Морские прогулки</a></li>
-                  <li><a href="#">Плавание с животными</a></li>
-                  <li><a href="#">Парки развлечений</a></li>
-                  <li><a href="#">Дайвинг</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="transfers.html">Трансферы</a>
-                <ul class="rd-navbar-dropdown">
-                  <li><a href="transfer.html">Трансфер</a></li>
-                  <li><a href="carrent.html">Аренда автомобилей</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">VIP сервисы</a>
-              </li>
-
-              <li><a href="blog.html">Блог</a>
-
-              </li>
-              <li><a href="reviews.html">Отзывы</a>
-              </li>
-              <li><a href="contacts.html">Контакты</a></li>
-            </ul>-->
           </div>
           <div class="rd-navbar-collapse-wrap reveal-md-inline-block">
             <ul class="list-inline list-inline-0 list-primary flag-wrapper">
@@ -77,23 +45,3 @@
     </nav>
   </div>
 </header>
-<?php if (!is_front_page()) {?>
-<section class="breadcrumbs">
-  <div class="breadcrumbs__bg">
-    <div class="container">
-      <h1 class="breadcrumbs__heading">
-        <?php if (is_category()) {?>
-          <?php single_cat_title();?>
-        <?php } else if (is_search()) {?>
-          Поиск
-          <?php } else if (is_404()) {?>
-          404
-        <?php } else {?>
-          <?php the_title();?>
-        <?php }?>
-      </h1>
-      <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' / '); ?>
-    </div>
-  </div>
-</section>
-<?php }?>
