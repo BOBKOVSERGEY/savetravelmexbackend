@@ -543,5 +543,36 @@ add_action('admin_head', 'mayak_remove_category_description');
  * end редактор в категориях
  */
 
+/**
+ * обрезка текста
+ */
+function cutText($text, $numLetters)
+{
+  $num = strlen($text);
+
+  if ($num > $numLetters) {
+    $text = substr($text, 0, $numLetters);
+    $text .= "...";
+  }
+
+  return $text;
+}
+/***
+ * end обрезка текста
+ */
+
+/**
+ * Кол-во постов
+ */
+function get_posts_4_st( $query ) {
+  if ( !is_admin() && $query->is_main_query() && is_category('reviews') ) {
+    $query->set( 'posts_per_page', 6 );
+  }
+}
+add_action( 'pre_get_posts', 'get_posts_4_st' );
+/**
+ * end
+ */
+
 
 
