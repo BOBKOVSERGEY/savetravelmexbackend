@@ -574,5 +574,105 @@ add_action( 'pre_get_posts', 'get_posts_4_st' );
  * end
  */
 
+/**
+ *
+ * Область поиска
+ */
+function tp_search_filter( $query ) {
+  if ( $query->is_search ) {
+    $query->set( 'cat','-12, -4');
+  }
+  if ( $query->is_search ) {
+    $query->set( 'post_type', array('post') );
+  }
+  return $query;
+}
+add_filter('pre_get_posts','tp_search_filter');
+
+/**
+ *
+ * End Область поиска
+ */
+
+/**
+ *
+ * Опции в админке
+ */
+function myMoreOptions()
+{
+  // создает поле опции
+  // $id, $title, $callback, $page, $section, $args
+  add_settings_field(
+    'phone',
+    'Телефон',
+    'displayPhone',
+    'general'
+  );
+  add_settings_field(
+    'address',
+    'Адрес',
+    'displayAddress',
+    'general'
+  );
+
+  // регистрирует новую опцию и callback функцию
+  register_setting(
+    'general',
+    'myAddress'
+  );
+}
+
+add_action('admin_init', 'myMoreOptions');
+
+function displayPhone()
+{
+  echo "<input type='text' class='regular-text' name='myPhone' value='" . esc_attr(get_option('myPhone')) . "'>";
+}
+function displayAddress()
+{
+  echo "<input type='text' class='regular-text' name='myAddress' value='" . esc_attr(get_option('myAddress')) . "'>";
+}
+/**
+ *
+ * end Опции в админке
+ */
+
+/**
+Регистрируем новый тип записи
+ */
+add_action('init', 'stmPostTypes');
+
+function stmPostTypes () {
+  // регистрация слайдера
+  register_post_type('slider', [
+    'labels' => [
+      'name'               => 'Слайдшоу на главной', // основное название для типа записи
+      'singular_name'      => 'Слайд', // название для одной записи этого типа
+      'add_new'            => 'Добавить новый', // для добавления новой записи
+      'add_new_item'       => 'Добавить новый слайд', // заголовка у вновь создаваемой записи в админ-панели.
+      'edit_item'          => 'Редактирование слайд', // для редактирования типа записи
+      'new_item'           => 'Новый слайд', // текст новой записи
+      'view_item'          => 'Смотреть слайд', // для просмотра записи этого типа.
+      'search_items'       => 'Искать слайды', // для поиска по этим типам записи
+      'not_found'          => 'Слайд не найдено', // если в результате поиска ничего не было найдено
+      'not_found_in_trash' => 'Не найдено в корзине слайда', // если не было найдено в корзине
+      'parent_item_colon'  => '', // для родителей (у древовидных типов)
+      'menu_name'          => 'Слайдшоу на главной', // название меню
+    ],
+    'public'              => true,
+    'publicly_queryable'  => false, // убираем возможность перейти
+    'exclude_from_search' => true, // убираем из поиска
+    'menu_position'       => 25,
+    'menu_icon'           => 'dashicons-images-alt2',
+    'hierarchical'        => false,
+    'supports'            => array('title', 'thumbnail', 'custom-fields'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+    'query_var'           => false
+  ]);
+
+}
+/**
+End Регистрируем новый тип записи
+ */
+
 
 

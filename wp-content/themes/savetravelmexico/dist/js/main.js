@@ -346,7 +346,7 @@ $document.ready(function () {
     effect: 'fade',
     speed: 600,
     autoplay: {
-      delay: 5000,
+      delay: 8000,
     },
     navigation: {
       nextEl: '.swiper-button-next',

@@ -5,10 +5,6 @@
         <a href="#" class="button button_blue" data-toggle="modal" data-target=".bs-example-modal-lg">Добавить отзыв</a>
       </div>-->
       <div class="row">
-        <?php
-
-        ?>
-
         <?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
           <div class="col-md-4">
             <div class="reviews-three__item">

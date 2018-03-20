@@ -45,9 +45,33 @@ if ( is_page( 'contacts' ) )
           </div>
         </div>
         <div class="col-md-4">
-          <?php if(!dynamic_sidebar('contacts-footer')){ ?>
-            <span>Это footer, добавляемого из виджетов</span>
-          <?php } ?>
+          <div class="footer__contacts-heading">
+            Связаться с нами
+          </div>
+          <div class="footer__contacts-container">
+            <div class="footer__contacts-icon">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="footer__contacts-description">
+              <?php echo get_option('myPhone'); ?>
+            </div>
+          </div>
+          <div class="footer__contacts-container">
+            <div class="footer__contacts-icon">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="footer__contacts-description">
+              <?php bloginfo('admin_email')?>
+            </div>
+          </div>
+          <div class="footer__contacts-container">
+            <div class="footer__contacts-icon">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </div>
+            <div class="footer__contacts-description">
+              <?php echo get_option('myAddress'); ?>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
           <div class="footer__letter-heading">
@@ -69,7 +93,7 @@ if ( is_page( 'contacts' ) )
         </div>
       </div>
       <div class="footer__copyright">
-        © <span id="copyright-year"></span>. Все права защизены. <a href="#">Политика обработки персональных данных</a>.
+        © <span id="copyright-year"></span>. Все права защизены. <a href="/soglasie-na-obrabotku-dannyh/">Политика обработки персональных данных</a>.
       </div>
     </div>
   </div>
