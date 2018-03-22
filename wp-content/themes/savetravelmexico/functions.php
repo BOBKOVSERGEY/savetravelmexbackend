@@ -669,6 +669,31 @@ function stmPostTypes () {
     'query_var'           => false
   ]);
 
+  register_post_type('our-them', [
+    'labels' => [
+      'name'               => 'Наша команда', // основное название для типа записи
+      'singular_name'      => 'Сотрудник', // название для одной записи этого типа
+      'add_new'            => 'Добавить нового', // для добавления новой записи
+      'add_new_item'       => 'Добавить нового сотрудника', // заголовка у вновь создаваемой записи в админ-панели.
+      'edit_item'          => 'Редактирование сотрудника', // для редактирования типа записи
+      'new_item'           => 'Новый сотрудник', // текст новой записи
+      'view_item'          => 'Смотреть сотрудника', // для просмотра записи этого типа.
+      'search_items'       => 'Искать сотрудника', // для поиска по этим типам записи
+      'not_found'          => 'Сотрудник не найден', // если в результате поиска ничего не было найдено
+      'not_found_in_trash' => 'Не найдено в корзине сотрудника', // если не было найдено в корзине
+      'parent_item_colon'  => '', // для родителей (у древовидных типов)
+      'menu_name'          => 'Наша команда', // название меню
+    ],
+    'public'              => true,
+    'publicly_queryable'  => false, // убираем возможность перейти
+    'exclude_from_search' => true, // убираем из поиска
+    'menu_position'       => 25,
+    'menu_icon'           => 'dashicons-admin-users',
+    'hierarchical'        => false,
+    'supports'            => array('title', 'thumbnail', 'custom-fields'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+    'query_var'           => false
+  ]);
+
 }
 /**
 End Регистрируем новый тип записи

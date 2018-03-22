@@ -9,77 +9,41 @@
       </article>
     <?php endwhile; ?>
     <?php endif; ?>
+<?php $ourThem = new WP_Query(
+  [
+    'post_type' => 'our-them',
+    //'order' => 'ASC',
+    'posts_per_page' => 12
+  ]
+); ?>
+<?php if ($ourThem->have_posts()) {?>
 <section class="our-team">
   <div class="container-fluid">
     <h2 class="our-team__heading">Наша команда</h2>
     <div class="row our-team__wrapper-item">
-      <div class="col-md-3 col-sm-6">
-        <div class="our-team__item">
-          <div class="our-team__item-img-wrap"><img src="<?php bloginfo('template_url')?>/dist/images/team-1.jpg" alt="" class="img-responsive center-block"></div>
-          <div class="our-team__item-content">
-            <div>
-              <h5 class="our-team__item-content-heading">Lorem ipsum dolor sit amet.</h5>
+        <?php while ($ourThem->have_posts()) : $ourThem->the_post(); ?>
+          <div class="col-md-3 col-sm-6">
+            <div class="our-team__item">
+              <div class="our-team__item-img-wrap"><img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()) ?>" alt="" class="img-responsive center-block"></div>
+              <div class="our-team__item-content">
+                <div>
+                  <h5 class="our-team__item-content-heading"><?php the_title(); ?></h5>
+                </div>
+                <?php if (get_post_meta(get_the_ID(), 'position_them', true)) {?>
+                  <div class="our-team__item-content-description">
+                    <?php echo get_post_meta(get_the_ID(), 'position_them', true); ?>
+                  </div>
+                <?php } ?>
+              </div>
             </div>
-            <div class="our-team__item-content-description">
-              (captain)
-            </div>
-            <!--<div class="our-team__item-content-button">
-              <a href="#" class="our-team__item-content-btn">view profile</a>
-            </div>-->
           </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="our-team__item">
-          <div class="our-team__item-img-wrap"><img src="<?php bloginfo('template_url')?>/dist/images/team-2.jpg" alt="" class="img-responsive center-block"></div>
-          <div class="our-team__item-content">
-            <div>
-              <h5 class="our-team__item-content-heading">Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="our-team__item-content-description">
-              (captain)
-            </div>
-            <!--<div class="our-team__item-content-button">
-              <a href="#" class="our-team__item-content-btn">view profile</a>
-            </div>-->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="our-team__item">
-          <div class="our-team__item-img-wrap"><img src="<?php bloginfo('template_url')?>/dist/images/team-1.jpg" alt="" class="img-responsive center-block"></div>
-          <div class="our-team__item-content">
-            <div>
-              <h5 class="our-team__item-content-heading">Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="our-team__item-content-description">
-              (captain)
-            </div>
-            <!--<div class="our-team__item-content-button">
-              <a href="#" class="our-team__item-content-btn">view profile</a>
-            </div>-->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="our-team__item">
-          <div class="our-team__item-img-wrap"><img src="<?php bloginfo('template_url')?>/dist/images/team-2.jpg" alt="" class="img-responsive center-block"></div>
-          <div class="our-team__item-content">
-            <div>
-              <h5 class="our-team__item-content-heading">Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="our-team__item-content-description">
-              (captain)
-            </div>
-            <!--<div class="our-team__item-content-button">
-              <a href="#" class="our-team__item-content-btn">view profile</a>
-            </div>-->
-          </div>
-        </div>
-      </div>
+        <?php endwhile; ?>
     </div>
   </div>
 </section>
+<?php } else { ?>
+
+<?php } ?>
 <section class="reviews-three">
   <div class="container">
     <h2 class="reviews-three__heading">Что говорят клиенты</h2>

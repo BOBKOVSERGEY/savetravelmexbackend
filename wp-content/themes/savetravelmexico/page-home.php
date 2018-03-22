@@ -3,7 +3,8 @@
 <?php $slider = new WP_Query(
   [
     'post_type' => 'slider',
-    'order' => 'ASC'
+    'order' => 'ASC',
+    'posts_per_page' => 10
   ]
 ); ?>
 <?php if ($slider->have_posts()) {?>
@@ -47,4 +48,43 @@
 <?php } else { ?>
   <p>Место для слайдера</p>
 <?php } ?>
+  <section  class="about">
+    <div class="container">
+      <?php $about = new WP_Query( 'pagename=o-kompanii' ); ?>
+      <?php if ($about->have_posts()) :  while ($about->have_posts()) : $about->the_post(); ?>
+        <?php if (get_post_meta(get_the_ID(), 'who_is_we_main_about', true)) {?>
+          <h2 class="about__heading">
+            <?php echo get_post_meta(get_the_ID(), 'who_is_we_main_about', true); ?>
+          </h2>
+        <?php } ?>
+        <?php if (get_post_meta(get_the_ID(), 'description_main_about', true)) {?>
+          <div class="about__heading-description">
+            <?php echo get_post_meta(get_the_ID(), 'description_main_about', true); ?>
+          </div>
+        <?php } ?>
+
+        <?php the_content(); ?>
+
+      <?php endwhile; ?>
+      <?php endif; ?>
+      <div class="about__wrapper-button">
+        <a href="/o-kompanii/" class="about__button about__button_blue">Подробнее</a>
+      </div>
+    </div>
+  </section>
+  <section class="reservation">
+    <div class="reservation__wrapper">
+      <div class="reservation__wrapper-bg">
+        <div class="container">
+          <h2 class="reservation__heading">Зарезервируй свое путешествие с нами</h2>
+          <div class="reservation__description">
+            <p>Наслаждайтесь своим временем в Мексике. Наша компания позаботиться о вашем отдыхе с индивидуальным сервисом для Вас и вашей семьи. Мы не только сохраним Ваши время и деньги, но и сделаем Ваш отдых незабываемым.</p>
+          </div>
+          <div class="reservation__button">
+            <a href="/tours/" class="reservation__btn reservation__btn_blue">Зарезервировать тур</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <?php get_footer(); ?>
