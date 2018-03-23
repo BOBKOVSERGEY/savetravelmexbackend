@@ -72,6 +72,98 @@
       </div>
     </div>
   </section>
+<?php
+$args = [
+  'category_name' => 'reviews',
+  'posts_per_page' => 6
+];
+$reviews = new WP_Query($args);
+?>
+<?php if ($reviews->have_posts()) {?>
+  <section class="reviews">
+    <div class="reviews__wrapper">
+      <div class="container">
+        <h2 class="reviews__heading">Что говорят клиенты</h2>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+              <div class="owl-carousel js-reviews">
+              <?php while ($reviews->have_posts()) : $reviews->the_post(); ?>
+                <div class="owl-item">
+                  <div class="reviews__item">
+                    <div class="reviews__item-img">
+                      <?php the_post_thumbnail([126,126]);?>
+                    </div>
+                    <div class="reviews__item-description">
+                      <?php the_excerpt(); ?>
+                    </div>
+                    <div class="reviews__item-author">
+                      <?php the_title(); ?>
+                    </div>
+                  </div>
+                </div>
+              <?php endwhile; ?>
+              </div>
+              <div class="reviews__button-all-review">
+                <a href="/reviews/" class="reviews__btn reviews__btn_blue">Все отзывы</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<?php } else { ?>
+  <!-- no-post-found -->
+<?php } ?>
+<?php
+$id = 1; // номер категории
+$blogPosts = new WP_Query([
+  'cat' => $id,
+  'posts_per_page' => 6,
+  'order' => 'DESC'
+]);
+?>
+<?php if ($blogPosts->have_posts()) {?>
+  <section class="blog">
+  <div class="container">
+  <h2 class="blog__heading">Блог</h2>
+  <div class="blog__intro">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <?php echo category_description(1); ?>
+      </div>
+    </div>
+  </div>
+  <div class="owl-carousel js-blog">
+
+    <?php while ($blogPosts->have_posts()) : $blogPosts->the_post(); ?>
+      <div class="owl-item">
+        <div class="blog__item">
+          <?php if (get_post_meta(get_the_ID(), 'blog_img_main', true)) {?>
+            <div class="blog__item-img">
+              <img src="<?php echo get_post_meta(get_the_ID(), 'blog_img_main', true); ?>" alt="">
+            </div>
+          <?php } else {?>
+            <div class="blog__item-img">
+              <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>" alt="">
+            </div>
+      <?php } ?>
+          <div class="blog__item-heading">
+            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+          </div>
+        </div>
+      </div>
+    <?php endwhile; ?>
+
+  </div>
+    <div class="blog__button-all-article">
+      <a href="<?php echo get_category_link(1)?>" class="blog__btn blog__btn_blue">Все статьи</a>
+    </div>
+  </div>
+  </section>
+<?php } else { ?>
+  <!-- no-post-found -->
+<?php } ?>
   <section class="reservation">
     <div class="reservation__wrapper">
       <div class="reservation__wrapper-bg">

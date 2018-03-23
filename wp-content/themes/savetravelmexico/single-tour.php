@@ -123,7 +123,7 @@ $gallery = get_post_meta($post->ID, 'gallery', true);
                 </div>
               </div>
               <div class="reservation-tours__wrapper-checkbox">
-                <input id="chk" type="checkbox" class="js-policy" checked><label for="chk">Подтверждаю свое согласие на <a href="#">обработку</a> персональных данных</label>
+                <input id="chk" type="checkbox" class="js-policy" checked><label for="chk">Подтверждаю свое согласие на <a href="/soglasie-na-obrabotku-dannyh/">обработку</a> персональных данных</label>
               </div>
               <div class="reservation-tours__wrapper-button">
                 <button class="reservation-tours__btn reservation-tours__btn_blue" type="submit">Зарезервировать тур</button>
@@ -134,7 +134,4 @@ $gallery = get_post_meta($post->ID, 'gallery', true);
       </div>
     </div>
   </section>
-
-
-
 <?php get_footer(); ?>
