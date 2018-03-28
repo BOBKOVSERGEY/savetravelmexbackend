@@ -580,7 +580,7 @@ add_action( 'pre_get_posts', 'get_posts_4_st' );
  */
 function tp_search_filter( $query ) {
   if ( $query->is_search ) {
-    $query->set( 'cat','-12, -4');
+    $query->set( 'cat','-12, -4, -13, -14, -15');
   }
   if ( $query->is_search ) {
     $query->set( 'post_type', array('post') );

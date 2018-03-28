@@ -521,6 +521,8 @@ $document.ready(function () {
     //time: false,
     weekStart : 1,
     cancelText : 'Отмена',
+    clearButton: true,
+    clearText: 'Очистить',
     okText : 'Ok',
     minDate : new Date(),
     //maxDate : '22-12-2017'
@@ -534,6 +536,8 @@ $document.ready(function () {
     //time: false,
     weekStart : 1,
     cancelText : 'Отмена',
+    clearButton: true,
+    clearText: 'Очистить',
     okText : 'Ok',
     minDate : new Date(),
     //maxDate : '22-12-2017'
@@ -596,7 +600,7 @@ $document.ready(function () {
     }
   });
 
-  /*validate reservation-tours__form*/
+  /*reservation-directions__form*/
   $('.reservation-directions__form').validate({
     rules: {
       name: {
@@ -613,6 +617,46 @@ $document.ready(function () {
     messages: {
       name: {
         required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
+  /*reservation-car__form*/
+  $('.reservation-car__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      datestart: {
+        required: true,
+      },
+      dateend: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      datestart: {
+        required: "Введите дату получения"
+      },
+      dateend: {
+        required: "Введите дату возврата"
       },
       email: {
         required: "Введите адрес электронной почты",
