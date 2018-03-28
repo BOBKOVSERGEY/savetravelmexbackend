@@ -29,9 +29,9 @@
                 <div>
                   <h5 class="our-team__item-content-heading"><?php the_title(); ?></h5>
                 </div>
-                <?php if (get_post_meta(get_the_ID(), 'position_them', true)) {?>
+                <?php if (get_post_meta(get_the_ID(), 'position_team', true)) {?>
                   <div class="our-team__item-content-description">
-                    <?php echo get_post_meta(get_the_ID(), 'position_them', true); ?>
+                    <?php echo get_post_meta(get_the_ID(), 'position_team', true); ?>
                   </div>
                 <?php } ?>
               </div>

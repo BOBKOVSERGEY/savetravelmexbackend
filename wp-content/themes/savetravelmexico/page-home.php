@@ -73,6 +73,49 @@
     </div>
   </section>
 <?php
+$id = 13; // номер категории
+$advantages = new WP_Query([
+  'cat' => $id,
+  'posts_per_page' => 3,
+  'order' => 'DESC'
+]);
+?>
+<?php if ($advantages->have_posts()) {?>
+  <section class="our-services">
+    <div class="container">
+      <h2 class="our-services__heading"><?php echo get_cat_name(13)?></h2>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <div class="our-services__description"><?php echo category_description(13); ?></div>
+        </div>
+      </div>
+    <div class="row">
+
+              <?php while ($advantages->have_posts()) : $advantages->the_post(); ?>
+                <div class="col-md-4">
+                  <div class="our-services__item">
+
+                    <?php if (get_post_meta(get_the_ID(), 'icon_advantages_main', true)) {?>
+                      <div class="our-services__item-icon">
+                        <?php echo get_post_meta(get_the_ID(), 'icon_advantages_main', true); ?>
+                      </div>
+                    <?php } ?>
+                    <div class="our-services__item-heading"><?php the_title(); ?></div>
+                    <div class="our-services__item-description">
+                      <?php the_content(); ?>
+                    </div>
+
+                    <div class="our-services__item-dot">...</div>
+                  </div>
+                </div>
+              <?php endwhile; ?>
+    </div>
+    </div>
+  </section>
+<?php } else { ?>
+  <!-- no-post-found -->
+<?php } ?>
+<?php
 $args = [
   'category_name' => 'reviews',
   'posts_per_page' => 6

@@ -345,9 +345,9 @@ $document.ready(function () {
     loop: true,
     effect: 'fade',
     speed: 600,
-    autoplay: {
-      delay: 8000,
-    },
+    //autoplay: {
+      //delay: 5000,
+    //},
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -597,6 +597,34 @@ $document.ready(function () {
   });
 
   /*validate reservation-tours__form*/
+  $('.reservation-directions__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
+  /*validate reservation-tours__form*/
   $('.contacts-form__form').validate({
     rules: {
       name: {
@@ -700,7 +728,7 @@ $document.ready(function () {
   /*validate comments__form*/
   $('.comments__form').validate({
     rules: {
-      author: {
+      name: {
         required: true,
       },
       email: {
@@ -712,7 +740,7 @@ $document.ready(function () {
       }
     },
     messages: {
-      author: {
+      name: {
         required: "Введите Ваше имя"
       },
       email: {

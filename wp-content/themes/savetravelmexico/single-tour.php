@@ -1,7 +1,7 @@
 <?php get_header('tour'); ?>
   <section class="tour-slider">
     <?php
-    $slider = get_post_meta($post->ID, 'slider', true);
+    $slider = get_post_meta($post->ID, 'slider_tour', true);
     ?>
     <?php if(!empty($slider)) { $slider = explode(",", $slider); ?>
       <div class="swiper-container tour-slider__container">
@@ -53,7 +53,7 @@
 <?php endif; ?>
 
 <?php
-$gallery = get_post_meta($post->ID, 'gallery', true);
+$gallery = get_post_meta($post->ID, 'gallery_tour', true);
 ?>
 <?php if(!empty($gallery)) { $gallery = explode(",", $gallery); ?>
   <section class="photo-gallery">

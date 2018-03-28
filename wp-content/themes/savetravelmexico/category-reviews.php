@@ -6,7 +6,7 @@
       </div>-->
       <div class="row">
         <?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
-          <div class="col-md-4">
+          <div class="col-md-4 reviews-three__item-wrap">
             <div class="reviews-three__item">
               <?php if ( has_post_thumbnail() ) {?>
                 <div class="reviews-three__item-img">

@@ -26,7 +26,7 @@
               <?php }?>
               <div class="tours__item-heading">
                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <div class="tours__item-price"><?php if (get_post_meta(get_the_ID(), 'price', true)) {?><?php echo get_post_meta(get_the_ID(), 'price', true); ?> <i class="fa fa-rub" aria-hidden="true"></i><?php } ?></div>
+                <div class="tours__item-price"><?php if (get_post_meta(get_the_ID(), 'price_tour', true)) {?><?php echo get_post_meta(get_the_ID(), 'price_tour', true); ?> <i class="fa fa-rub" aria-hidden="true"></i><?php } ?></div>
               </div>
             </div>
           </div>
