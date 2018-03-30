@@ -63,7 +63,7 @@
           </div>
         <?php } ?>
 
-        <?php the_content(); ?>
+        <?php the_excerpt(); ?>
 
       <?php endwhile; ?>
       <?php endif; ?>

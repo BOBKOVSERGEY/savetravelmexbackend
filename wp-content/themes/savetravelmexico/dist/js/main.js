@@ -303,6 +303,77 @@ $document.ready(function () {
   });
 
   /**
+   * owl - js-flights
+   */
+  $('.js-flights').owlCarousel({
+    animateOut: 'slideOutDown',
+    animateIn: 'flipInX',
+    items:3,
+    margin:50,
+    stagePadding:40,
+    smartSpeed:450,
+    //nav:true,
+    //dots:false,
+    loop:true,
+    navElement: 'div class="owl-slider-arrow-directions"',
+    navText:[],
+    responsive:{
+      0:{
+        items:1,
+        nav:false,
+        dots:true,
+        margin:30,
+        stagePadding:5,
+      },
+      700:{
+        items:2,
+        nav:false,
+        dots:true,
+      },
+      992:{
+        items:3,
+        nav:true,
+        dots:false,
+      }
+    }
+  });
+  /**
+   * owl - js-cruises
+   */
+  $('.js-cruises').owlCarousel({
+    animateOut: 'slideOutDown',
+    animateIn: 'flipInX',
+    items:3,
+    margin:50,
+    stagePadding:40,
+    smartSpeed:450,
+    //nav:true,
+    //dots:false,
+    loop:true,
+    navElement: 'div class="owl-slider-arrow-directions"',
+    navText:[],
+    responsive:{
+      0:{
+        items:1,
+        nav:false,
+        dots:true,
+        margin:30,
+        stagePadding:5,
+      },
+      700:{
+        items:2,
+        nav:false,
+        dots:true,
+      },
+      992:{
+        items:3,
+        nav:true,
+        dots:false,
+      }
+    }
+  });
+
+  /**
    * owl - js-photo-gallery
    */
   $('.js-photo-gallery').owlCarousel({
@@ -599,6 +670,34 @@ $document.ready(function () {
       }
     }
   });
+  /*validate reservation-cruises__form*/
+  $('.reservation-cruises__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
 
   /*reservation-directions__form*/
   $('.reservation-directions__form').validate({
@@ -621,6 +720,52 @@ $document.ready(function () {
       email: {
         required: "Введите адрес электронной почты",
         email: "Не корректный адрес электронной почты"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
+  /*reservation-flights__form*/
+  $('.reservation-flights__form').validate({
+    rules: {
+      name: {
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      departure: {
+        required: true
+      },
+      arrival: {
+        required: true
+      },
+      date: {
+        required: true
+      },
+      policy: {
+        required: true
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      departure: {
+        required: "Введите место вылета"
+      },
+      arrival: {
+        required: "Введите место прилета"
+      },
+      date: {
+        required: "Введите дату у время вылета"
       },
       policy: {
         required: "Введите Ваши контакты"

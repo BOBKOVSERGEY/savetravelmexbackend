@@ -260,7 +260,13 @@ set_post_thumbnail_size( 1280,720 );
 Длина анонса в блоге
  */
 function new_excerpt_length($length) {
-  return 30;
+  if(in_category(1)) {
+    return 30;
+  } else if (is_page()) {
+    return 60;
+  } else {
+    return 60;
+  }
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
@@ -580,7 +586,7 @@ add_action( 'pre_get_posts', 'get_posts_4_st' );
  */
 function tp_search_filter( $query ) {
   if ( $query->is_search ) {
-    $query->set( 'cat','-12, -4, -13, -14, -15');
+    $query->set( 'cat','-12, -4, -13, -14, -15, -16');
   }
   if ( $query->is_search ) {
     $query->set( 'post_type', array('post') );
