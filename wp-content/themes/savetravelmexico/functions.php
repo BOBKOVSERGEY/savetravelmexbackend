@@ -700,6 +700,31 @@ function stmPostTypes () {
     'query_var'           => false
   ]);
 
+  register_post_type('services', [
+    'labels' => [
+      'name'               => 'Услуги на главной и в услугах', // основное название для типа записи
+      'singular_name'      => 'Услуга', // название для одной записи этого типа
+      'add_new'            => 'Добавить новую', // для добавления новой записи
+      'add_new_item'       => 'Добавить новую услугу', // заголовка у вновь создаваемой записи в админ-панели.
+      'edit_item'          => 'Редактирование услуги', // для редактирования типа записи
+      'new_item'           => 'Новая услуга', // текст новой записи
+      'view_item'          => 'Смотреть услугу', // для просмотра записи этого типа.
+      'search_items'       => 'Искать услугу', // для поиска по этим типам записи
+      'not_found'          => 'Услуга не найдена', // если в результате поиска ничего не было найдено
+      'not_found_in_trash' => 'Не найдено в корзине сотрудника', // если не было найдено в корзине
+      'parent_item_colon'  => '', // для родителей (у древовидных типов)
+      'menu_name'          => 'Услуги на главной и в услугах', // название меню
+    ],
+    'public'              => true,
+    'publicly_queryable'  => false, // убираем возможность перейти
+    'exclude_from_search' => true, // убираем из поиска
+    'menu_position'       => 25,
+    'menu_icon'           => 'dashicons-palmtree',
+    'hierarchical'        => false,
+    'supports'            => array('title', 'thumbnail', 'custom-fields', 'editor'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+    'query_var'           => false
+  ]);
+
 }
 /**
 End Регистрируем новый тип записи
