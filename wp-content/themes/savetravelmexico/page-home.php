@@ -112,6 +112,9 @@ $services = new WP_Query([
           </div>
         <?php endwhile; ?>
       </div>
+      <div class="categories-tours__wrapper-button">
+        <a href="/uslugi/" class="categories-tours__button categories-tours__button_blue">Все услуги</a>
+      </div>
     </div>
   </section>
 <?php } else { ?>
