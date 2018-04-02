@@ -582,16 +582,19 @@ add_action( 'pre_get_posts', 'get_posts_4_st' );
 
 /**
  *
- * Область поиска
- */
+ * Область поиска*/
+
 function tp_search_filter( $query ) {
-  if ( $query->is_search ) {
-    $query->set( 'cat','-12, -4, -13, -14, -15, -16');
+  if (!is_admin()) {
+    if ( $query->is_search ) {
+      $query->set( 'cat','-12, -4, -13, -14, -15, -16, -17, -18');
+    }
+    if ( $query->is_search ) {
+      $query->set( 'post_type', array('post') );
+    }
+    return $query;
   }
-  if ( $query->is_search ) {
-    $query->set( 'post_type', array('post') );
-  }
-  return $query;
+
 }
 add_filter('pre_get_posts','tp_search_filter');
 

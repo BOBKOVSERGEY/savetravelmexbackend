@@ -87,14 +87,12 @@ $services = new WP_Query([
         <?php while ($services->have_posts()) : $services->the_post(); ?>
           <div class="col-md-4 col-sm-6">
             <div class="categories-tours__item">
-              <?php if ( has_post_thumbnail() ) {?>
-                <div class="categories-tours__item-img-wrap">
-                  <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()) ?>" width="641" height="516"  alt="<?php the_title(); ?>">
-                </div>
-              <?php }?>
-
+            <?php if ( has_post_thumbnail() ) {?>
+              <div class="categories-tours__item-img-wrap">
+                <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()) ?>" width="641" height="516"  alt="<?php the_title(); ?>">
+              </div>
+            <?php }?>
               <div class="categories-tours__item-body">
-
                 <h2 class="categories-tours__item-heading">
                   <?php the_title(); ?>
                 </h2>
@@ -119,7 +117,6 @@ $services = new WP_Query([
 <?php } else { ?>
 
 <?php } ?>
-
 <?php
 $id = 13; // номер категории
 $advantages = new WP_Query([
