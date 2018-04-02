@@ -303,9 +303,9 @@ $document.ready(function () {
   });
 
   /**
-   * owl - js-flights
+   * owl - js-flights, .js-hotels
    */
-  $('.js-flights').owlCarousel({
+  $('.js-flights, .js-hotels').owlCarousel({
     animateOut: 'slideOutDown',
     animateIn: 'flipInX',
     items:3,
@@ -323,7 +323,7 @@ $document.ready(function () {
         nav:false,
         dots:true,
         margin:30,
-        stagePadding:5,
+        stagePadding:5
       },
       700:{
         items:2,
@@ -613,6 +613,21 @@ $document.ready(function () {
     minDate : new Date(),
     //maxDate : '22-12-2017'
   });
+  $('.time-reserve-hotels').bootstrapMaterialDatePicker
+  ({
+    //format : 'DD-MM-YYYY HH:mm',
+    format : 'DD-MM-YYYY HH:mm',
+    lang: 'ru',
+    date: true,
+    //time: false,
+    weekStart : 1,
+    cancelText : 'Отмена',
+    clearButton: true,
+    clearText: 'Очистить',
+    okText : 'Ok',
+    minDate : new Date(),
+    //maxDate : '22-12-2017'
+  });
 
   /*$('#date-format').bootstrapMaterialDatePicker
   ({
@@ -766,6 +781,46 @@ $document.ready(function () {
       },
       date: {
         required: "Введите дату у время вылета"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
+  /*reservation-hotels__form*/
+  $('.reservation-hotels__form').validate({
+    rules: {
+      name: {
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      date_departure: {
+        required: true
+      },
+      date_arrival: {
+        required: true
+      },
+      policy: {
+        required: true
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      date_departure: {
+        required: "Введите дату заезда"
+      },
+      date_arrival: {
+        required: "Введите дату отъезда"
       },
       policy: {
         required: "Введите Ваши контакты"

@@ -35,6 +35,9 @@
       <div class="container">
         <h1 class="tour-slider__heading"><?php the_title();?></h1>
         <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' / '); ?>
+        <?php if (get_post_meta(get_the_ID(), 'price_tour', true)) {?>
+          <div class="tour-slider__price"><?php echo get_post_meta(get_the_ID(), 'price_tour', true); ?> <i class="fa fa-rub" aria-hidden="true"></i></div>
+        <?php } ?>
       </div>
     </div>
     <div class="tour-slider__bottom-panel" id="description">

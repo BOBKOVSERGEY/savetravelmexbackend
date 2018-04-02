@@ -4,24 +4,25 @@
       <?php echo category_description(); ?>
     </div>
   </article>
+<?php
+$id = 9;
+$categoryTours = new WP_Query([
+  'cat' => $id,
+  'posts_per_page' => 50,
+  //'order' => 'ASC'
+]);
+?>
+<?php if ($categoryTours->post_count < 4) {?>
   <section class="tours">
     <div class="container">
       <h2 class="tours__heading">Туры</h2>
-      <div class="owl-carousel js-tours">
-        <?php
-        $args = [
-          'category_name' => 'parki-razvlecheniy',
-          'posts_per_page' => 50
-        ];
-        $categoryTours = new WP_Query($args);
-        ?>
-
+      <div class="row">
         <?php if ($categoryTours->have_posts()) :  while ($categoryTours->have_posts()) : $categoryTours->the_post(); ?>
-          <div class="owl-item">
+          <div class="col-md-4 col-sm-4">
             <div class="tours__item">
               <?php if ( has_post_thumbnail() ) {?>
                 <div class="tours__item-img">
-                  <?php the_post_thumbnail([320,320]);?>
+                  <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()) ?>" alt="<?php the_title(); ?>">
                 </div>
               <?php }?>
               <div class="tours__item-heading">
@@ -37,6 +38,33 @@
       </div>
     </div>
   </section>
+<?php } else { ?>
+  <section class="tours">
+    <div class="container">
+      <h2 class="tours__heading">Туры</h2>
+      <div class="owl-carousel js-tours">
+        <?php if ($categoryTours->have_posts()) :  while ($categoryTours->have_posts()) : $categoryTours->the_post(); ?>
+          <div class="owl-item">
+            <div class="tours__item">
+              <?php if ( has_post_thumbnail() ) {?>
+                <div class="tours__item-img">
+                  <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()) ?>" alt="<?php the_title(); ?>">
+                </div>
+              <?php }?>
+              <div class="tours__item-heading">
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <div class="tours__item-price"><?php if (get_post_meta(get_the_ID(), 'price_tour', true)) {?><?php echo get_post_meta(get_the_ID(), 'price_tour', true); ?> <i class="fa fa-rub" aria-hidden="true"></i><?php } ?></div>
+              </div>
+            </div>
+          </div>
+        <?php endwhile; ?>
+        <?php else: ?>
+          <p>Туров пока нет!</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </section>
+<?php } ?>
   <section class="reservation-tours">
     <div class="reservation-tours__wrapper">
       <div class="reservation-tours__wrapper-bg">
