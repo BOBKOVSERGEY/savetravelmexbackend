@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="<?php bloginfo('template_url')?>/dist/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
   <?php wp_head(); ?>
+  <meta name="description" content="">
 </head>
 <body>
 <header class="slider-menu-position">

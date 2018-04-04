@@ -1,9 +1,6 @@
 <?php
-if ( !is_page( 'tours' ) && $post->post_parent )
-  include __DIR__ . '/inc/form-tour.php';
 if ( is_page( 'contacts' ) )
   include __DIR__ . '/inc/form-contacts.php';
-
 ?>
 <section class="footer">
   <div class="footer__wrapper">

@@ -305,7 +305,7 @@ $document.ready(function () {
   /**
    * owl - js-flights, .js-hotels
    */
-  $('.js-flights, .js-hotels').owlCarousel({
+  $('.js-flights, .js-hotels, .js-wedding').owlCarousel({
     animateOut: 'slideOutDown',
     animateIn: 'flipInX',
     items:3,
@@ -628,6 +628,21 @@ $document.ready(function () {
     minDate : new Date(),
     //maxDate : '22-12-2017'
   });
+  $('.timeWedding').bootstrapMaterialDatePicker
+  ({
+    //format : 'DD-MM-YYYY HH:mm',
+    format : 'DD-MM-YYYY',
+    lang: 'ru',
+    date: true,
+    time: false,
+    weekStart : 1,
+    cancelText : 'Отмена',
+    clearButton: true,
+    clearText: 'Очистить',
+    okText : 'Ok',
+    minDate : new Date(),
+    //maxDate : '22-12-2017'
+  });
 
   /*$('#date-format').bootstrapMaterialDatePicker
   ({
@@ -679,6 +694,39 @@ $document.ready(function () {
       email: {
         required: "Введите адрес электронной почты",
         email: "Не корректный адрес электронной почты"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+  /*validate reservation-tours__form*/
+  $('.reservation-wedding__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      date: {
+        required: true,
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      date: {
+        required: "Укажите дату свадьбы"
       },
       policy: {
         required: "Введите Ваши контакты"

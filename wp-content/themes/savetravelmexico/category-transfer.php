@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <article class="content text-center">
+  <article class="content">
     <div class="container">
       <?php echo category_description(); ?>
     </div>
