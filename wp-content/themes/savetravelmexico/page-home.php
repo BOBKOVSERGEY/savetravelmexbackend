@@ -75,7 +75,9 @@
 <?php
 $services = new WP_Query([
   'post_type' => 'services',
-  //'order' => 'ASC',
+  'meta_key' => 'order_service',
+  'orderby' => 'meta_value_num',
+  'order' => 'ASC',
   'posts_per_page' => 6
 ]);
 ?>

@@ -305,7 +305,7 @@ $document.ready(function () {
   /**
    * owl - js-flights, .js-hotels
    */
-  $('.js-flights, .js-hotels, .js-wedding').owlCarousel({
+  $('.js-flights, .js-hotels, .js-wedding, .js-security').owlCarousel({
     animateOut: 'slideOutDown',
     animateIn: 'flipInX',
     items:3,
@@ -700,7 +700,7 @@ $document.ready(function () {
       }
     }
   });
-  /*validate reservation-tours__form*/
+  /*validate reservation-wedding__form*/
   $('.reservation-wedding__form').validate({
     rules: {
       name: {
@@ -727,6 +727,40 @@ $document.ready(function () {
       },
       date: {
         required: "Укажите дату свадьбы"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+
+  /*validate reservation-security__form*/
+  $('.reservation-security__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      date: {
+        required: true,
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      date: {
+        required: "Укажите дату и время сопровождения"
       },
       policy: {
         required: "Введите Ваши контакты"
