@@ -778,6 +778,31 @@ function stmPostTypes () {
     'query_var'           => false
   ]);
 
+  register_post_type('birth', [
+    'labels' => [
+      'name'               => 'Пакеты для родов', // основное название для типа записи
+      'singular_name'      => 'Пакет', // название для одной записи этого типа
+      'add_new'            => 'Добавить пакет', // для добавления новой записи
+      'add_new_item'       => 'Добавить новый пакет', // заголовка у вновь создаваемой записи в админ-панели.
+      'edit_item'          => 'Редактирование пакета', // для редактирования типа записи
+      'new_item'           => 'Новый пакет', // текст новой записи
+      'view_item'          => 'Смотреть пакет', // для просмотра записи этого типа.
+      'search_items'       => 'Искать пакет', // для поиска по этим типам записи
+      'not_found'          => 'Пакет не найдена', // если в результате поиска ничего не было найдено
+      'not_found_in_trash' => 'Не найдено в корзине пакета', // если не было найдено в корзине
+      'parent_item_colon'  => '', // для родителей (у древовидных типов)
+      'menu_name'          => 'Пакеты для родов', // название меню
+    ],
+    'public'              => true,
+    'publicly_queryable'  => false, // убираем возможность перейти
+    'exclude_from_search' => true, // убираем из поиска
+    'menu_position'       => 25,
+    'menu_icon'           => 'dashicons-groups',
+    'hierarchical'        => false,
+    'supports'            => array('title', 'thumbnail', 'custom-fields'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+    'query_var'           => false
+  ]);
+
 }
 /**
 End Регистрируем новый тип записи
