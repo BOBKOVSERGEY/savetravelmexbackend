@@ -305,7 +305,7 @@ $document.ready(function () {
   /**
    * owl - js-flights, .js-hotels
    */
-  $('.js-flights, .js-hotels, .js-wedding, .js-security, .js-birth').owlCarousel({
+  $('.js-flights, .js-hotels, .js-wedding, .js-security, .js-birth, .js-dentist').owlCarousel({
     animateOut: 'slideOutDown',
     animateIn: 'flipInX',
     items:3,
@@ -726,7 +726,7 @@ $document.ready(function () {
         email: "Не корректный адрес электронной почты"
       },
       date: {
-        required: "Укажите дату свадьбы"
+        required: "Введите дату свадьбы"
       },
       policy: {
         required: "Введите Ваши контакты"
@@ -760,7 +760,7 @@ $document.ready(function () {
         email: "Не корректный адрес электронной почты"
       },
       date: {
-        required: "Укажите дату и время сопровождения"
+        required: "Введите дату и время сопровождения"
       },
       policy: {
         required: "Введите Ваши контакты"
@@ -794,7 +794,40 @@ $document.ready(function () {
         email: "Не корректный адрес электронной почты"
       },
       date: {
-        required: "Укажите ориентировочную дату"
+        required: "Ввидите ориентировочную дату"
+      },
+      policy: {
+        required: "Введите Ваши контакты"
+      }
+    }
+  });
+  /*validate reservation-dentist__form*/
+  $('.reservation-dentist__form').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      date: {
+        required: true,
+      },
+      policy: {
+        required: true,
+      }
+    },
+    messages: {
+      name: {
+        required: "Введите Ваше имя"
+      },
+      email: {
+        required: "Введите адрес электронной почты",
+        email: "Не корректный адрес электронной почты"
+      },
+      date: {
+        required: "Введите дату"
       },
       policy: {
         required: "Введите Ваши контакты"
